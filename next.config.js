@@ -19,6 +19,11 @@ const nextConfig = {
         hostname: "fakestoreapi.com",
         pathname: "/img/*",
       },
+      {
+        protocol: "https",
+        hostname: "i.dummyjson.com",
+        pathname: "/**",
+      },
     ],
   },
 };

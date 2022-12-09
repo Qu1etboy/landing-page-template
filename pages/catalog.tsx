@@ -1,23 +1,28 @@
 import Container from "../components/Container";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface TProduct {
   id: number;
   title: string;
   price: number;
   description: string;
-  image: string;
+  thumbnail: string;
+  images: string[];
   category: string;
 }
 
 const Catalog = () => {
-  const [products, setProducts] = useState<Array<TProduct>>([]);
+  const [products, setProducts] = useState<Array<TProduct>>();
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://dummyjson.com/products")
       .then((res) => res.json())
-      .then((json) => setProducts(json));
+      .then((json) => {
+        console.log(json.products);
+        setProducts(json.products);
+      });
   }, []);
 
   return (
@@ -25,11 +30,16 @@ const Catalog = () => {
       <div className="container mx-auto px-6 my-24">
         <h1 className="text-3xl font-bold mb-10">Catalog</h1>
         <Search />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+
+        {products !== undefined ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {products?.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center">Loading...</div>
+        )}
       </div>
     </Container>
   );
@@ -39,15 +49,18 @@ const ProductCard = ({ product }: { product: TProduct }) => {
   return (
     <div className="flex justify-center w-full">
       <div className="rounded-lg shadow-lg bg-white w-full flex flex-col">
-        <a href="#!" className="flex items-center justify-center h-full">
+        <Link
+          href={`/catalog/${product.id}`}
+          className="flex items-center justify-center h-full"
+        >
           <Image
             className="rounded-t-lg m-2"
-            src={product.image}
+            src={product.thumbnail}
             alt="product"
             width={200}
             height={100}
           />
-        </a>
+        </Link>
         <div className="p-6 mt-auto">
           <h5 className="text-gray-900 text-xl font-medium mb-2">
             {product.title}
@@ -55,12 +68,13 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           <p className="text-gray-700 text-base mb-4 font-medium">
             $ {product.price}
           </p>
-          <button
+          <Link
             type="button"
             className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+            href={`/catalog/${product.id}`}
           >
             View Detail
-          </button>
+          </Link>
         </div>
       </div>
     </div>

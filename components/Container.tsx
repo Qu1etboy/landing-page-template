@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import Script from "next/script";
 
 const Container = (props: any) => {
   const { children, ...customMeta } = props;

@@ -1,6 +1,6 @@
 # Landing page template
 
-A Landing page template designed for advertising ecommerce.
+A Landing page template designed for advertising ecommerce business.
 Just clone or folk this repo and modified the code (style, color, layout)
 as much as you want.
 

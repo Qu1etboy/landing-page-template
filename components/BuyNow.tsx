@@ -5,19 +5,19 @@ const BuyNow = () => {
   return (
     <div className="container mt-24 px-6 mx-auto">
       <section className="mb-32 text-gray-800 text-center">
-        <h1 className="text-3xl font-bold mb-24">Buy Now</h1>
+        <h1 className="text-3xl font-bold mb-12">Buy Now</h1>
         <p></p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 place-items-center">
-          <Link href="#">
+          <Link href="#!">
             <LazadaLogo />
           </Link>
-          <Link href="#">
+          <Link href="#!">
             <ShopeeLogo />
           </Link>
-          <Link href="#">
+          <Link href="#!">
             <FacebookLogo />
           </Link>
-          <Link href="#">
+          <Link href="#!">
             <LineLogo />
           </Link>
         </div>
