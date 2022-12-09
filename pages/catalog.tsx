@@ -2,6 +2,7 @@ import Container from "../components/Container";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Spinner } from "../components/Spinner";
 
 interface TProduct {
   id: number;
@@ -38,7 +39,7 @@ const Catalog = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center">Loading...</div>
+          <Spinner />
         )}
       </div>
     </Container>

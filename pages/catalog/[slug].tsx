@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import BuyNow from "../../components/BuyNow";
+import { Spinner } from "../../components/Spinner";
 
 interface TProduct {
   id: number;
@@ -57,7 +58,7 @@ const Product = () => {
             <Accordion />
           </>
         ) : (
-          <div className="text-center">Loading...</div>
+          <Spinner />
         )}
 
         <BuyNow />
