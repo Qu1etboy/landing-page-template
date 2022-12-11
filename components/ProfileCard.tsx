@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 const StarFilled = () => {
   return (
@@ -54,7 +55,13 @@ const ProfileCard = ({
   rating: number;
 }) => {
   return (
-    <div className="carousel-item active relative float-left w-full">
+    <motion.div
+      initial={{ x: 1000 }}
+      animate={{ x: 0 }}
+      exit={{ x: -1000 }}
+      transition={{ duration: 0.1, type: "easeInOut" }}
+      className="carousel-item active relative float-left w-full"
+    >
       <Image
         className="rounded-full shadow-lg mb-6 mx-auto"
         src={photoURL}
@@ -91,7 +98,7 @@ const ProfileCard = ({
           </ul>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

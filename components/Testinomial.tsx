@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ProfileCard from "./ProfileCard";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 const data: {
   name: string;
@@ -46,7 +47,12 @@ const Testinomial = () => {
           data-bs-ride="carousel"
         >
           <div className="carousel-inner relative w-full overflow-hidden">
-            <ProfileCard key={index} {...data[index]} />
+            <AnimatePresence>
+              {data.map(
+                (person, idx) =>
+                  idx == index && <ProfileCard key={idx} {...person} />
+              )}
+            </AnimatePresence>
           </div>
           <button
             className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
