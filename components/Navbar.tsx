@@ -25,15 +25,9 @@ const Navbar = () => {
             LOGO
           </Link>
           <div className="hidden lg:flex gap-10">
-            <Link href="/about" className="cursor-pointer">
-              About
-            </Link>
-            <Link href="/catalog" className="cursor-pointer">
-              Catalog
-            </Link>
-            <Link href="/contact" className="cursor-pointer">
-              Contact
-            </Link>
+            <NavLink href="/about">About</NavLink>
+            <NavLink href="/catalog">Catalog</NavLink>
+            <NavLink href="/contact">Contact</NavLink>
           </div>
         </ul>
         <ul className="flex items-center gap-2">
@@ -124,15 +118,9 @@ const Offcanvas = ({
               </div>
               <div className="offcanvas-body flex-grow p-4 overflow-y-auto">
                 <div className="flex flex-col gap-10 ml-5">
-                  <Link href="/about" className="cursor-pointer">
-                    About
-                  </Link>
-                  <Link href="/catalog" className="cursor-pointer">
-                    Catalog
-                  </Link>
-                  <Link href="/contact" className="cursor-pointer">
-                    Contact
-                  </Link>
+                  <NavLink href="/about">About</NavLink>
+                  <NavLink href="/catalog">Catalog</NavLink>
+                  <NavLink href="/contact">Contact</NavLink>
                 </div>
               </div>
             </motion.div>
@@ -146,6 +134,25 @@ const Offcanvas = ({
         </>
       )}
     </AnimatePresence>
+  );
+};
+
+const NavLink = ({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => {
+  const router = useRouter();
+
+  return (
+    <Link
+      href={href}
+      className={`${router.asPath === href ? "font-bold" : ""} cursor-pointer`}
+    >
+      {children}
+    </Link>
   );
 };
 
