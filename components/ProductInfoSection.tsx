@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const ProductInfoSection = () => {
   return (
@@ -29,12 +30,13 @@ const ProductInfoSection = () => {
           </p>
 
           <div>
-            <button
+            <Link
               type="button"
               className="inline-block px-7 py-3 mt-6 bg-gray-800 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
+              href="/catalog"
             >
               View Catalog
-            </button>
+            </Link>
           </div>
         </div>
       </div>
